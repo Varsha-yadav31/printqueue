@@ -312,7 +312,7 @@ function LoginScreen({ onLogin, onGoSignup, onAdminLogin }) {
 
   const handle = () => {
     if (!email || !pass) { setErr("Please fill all fields"); return; }
-    onLogin({ name: "Aditya Sharma", email, role: "student", id: "s_new" });
+    onLogin({ name: email.split("@")[0], email, role: "student", id: "s_new" });
   };
 
   return (

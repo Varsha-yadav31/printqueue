@@ -332,6 +332,7 @@ function LoginScreen({ onLogin, onGoSignup, onAdminLogin }) {
       <div style={{ textAlign: "right", marginBottom: 24 }}>
         <span style={{ fontSize: 13, color: "#4F46E5", fontWeight: 600, cursor: "pointer" }}>Forgot password?</span>
       </div>
+
       <Btn onClick={handle} size="lg">Log In →</Btn>
       <div style={{
         display: "flex", alignItems: "center", gap: 12, margin: "20px 0",
@@ -1441,13 +1442,13 @@ function ProfileScreen({ user, onLogout }) {
       </div>
       <div style={{ padding: 16 }}>
         {[
-          { icon: "📋", label: "My Orders", sub: "View print history" },
-          { icon: "💳", label: "Payment History", sub: "Past transactions" },
-          { icon: "🔔", label: "Notifications", sub: "Order alerts" },
-          { icon: "🔒", label: "Change Password", sub: "Security settings" },
-          { icon: "📞", label: "Help & Support", sub: "Contact us" },
+          { icon: "📋", label: "My Orders", sub: "View print history", onClick: () => {} },
+          { icon: "💳", label: "Payment History", sub: "Past transactions", onClick: () => {} },
+          { icon: "🔔", label: "Notifications", sub: "Order alerts", onClick: () => {} },
+          { icon: "🔒", label: "Change Password", sub: "Security settings", onClick: () => {} },
+          { icon: "📞", label: "Help & Support", sub: "Contact us", onClick: () => alert("Contact: support@printqueue.com") },
         ].map(item => (
-          <Card key={item.label} style={{ padding: 16, marginBottom: 8, cursor: "pointer", display: "flex", alignItems: "center", gap: 14 }}>
+          <Card key={item.label} onClick={item.onClick} style={{ padding: 16, marginBottom: 8, cursor: "pointer", display: "flex", alignItems: "center", gap: 14 }}>
             <div style={{ width: 42, height: 42, background: "#EEF2FF", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>{item.icon}</div>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 15, fontWeight: 700, color: "#111827" }}>{item.label}</div>

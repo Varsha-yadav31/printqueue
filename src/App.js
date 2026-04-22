@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from 'react';
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
 const SHOPS = [
@@ -1471,7 +1471,7 @@ export default function App() {
   const [screen, setScreen] = useState("splash");
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState(INIT_ORDERS);
-  const [workers, setWorkers] = useState(INIT_WORKERS);
+  const [workers] = useState([]);
   const [feedback, setFeedback] = useState(INIT_FEEDBACK);
   const [nav, setNav] = useState("home");
   const [uploadData, setUploadData] = useState(null);

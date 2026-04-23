@@ -306,13 +306,14 @@ function Splash({ onDone }) {
 
 // ─── AUTH SCREENS ──────────────────────────────────────────────────────────────
 function LoginScreen({ onLogin, onGoSignup, onAdminLogin }) {
-  const [email, setEmail] = useState("student@university.edu");
-  const [pass, setPass] = useState("password123");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
   const [err, setErr] = useState("");
 
   const handle = () => {
     if (!email || !pass) { setErr("Please fill all fields"); return; }
-    onLogin({ name: email.split("@")[0], email, role: "student", id: "s_new" });
+    const name = email.split("@")[0].replace(/[._]/g, " ").split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+    onLogin({ name, email, role: "student", id: "s_" + Date.now() });
   };
 
   return (
@@ -342,7 +343,10 @@ function LoginScreen({ onLogin, onGoSignup, onAdminLogin }) {
         <div style={{ flex: 1, height: 1, background: "#E5E7EB" }} />
       </div>
       <button
-        onClick={() => onLogin({ name: "Aditya Sharma", email: "demo@univ.edu", role: "student", id: "s_new" })}
+        onClick={() => {
+          const name = email ? email.split("@")[0].replace(/[._]/g, " ").split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") : "Demo User";
+          onLogin({ name, email: email || "demo@univ.edu", role: "student", id: "s_" + Date.now() });
+        }}
         style={{
           width: "100%", padding: "13px", border: "1.5px solid #E5E7EB",
           borderRadius: 13, background: "#fff", fontFamily: "inherit",
